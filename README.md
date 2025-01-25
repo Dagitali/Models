@@ -13,16 +13,8 @@ This package focuses on providing practical protocols that:
 * Formalize patterns found in common data models.
 * Enhance reusability and readability of data-related code in Swift projects.
 
-By integrating Models into your project, you can reduce boilerplate code, improve maintainability,
-and adopt standardized patterns for data models in modern Swift apps and packages.
-
-This package focuses on providing practical, reusable extensions and abstractions that:
-
-* Simplify common patterns in SwiftData.
-* Extend SwiftData’s capabilities without overriding or replacing its native functionality.
-
-By integrating Models into your project, you can reduce boilerplate code, improve readability, and
-adopt reusable patterns tailored for modern Swift apps and packages.
+By integrating Models into your project, you can reduce boilerplate code, improve readability and
+maintainability, and adopt standardized patterns for data models in modern Swift apps and packages.
 
 ## Features
 

@@ -23,8 +23,8 @@ struct MockEvent: Schedulable {
     // MARK: Properties
 
     // Required
-    var startAt: Date
-    var endAt: Date
+    var start: Date
+    var end: Date
 }
 
 // MARK: - Tests
@@ -44,7 +44,7 @@ struct SchedulableTests {
         let end = start.addingTimeInterval(3600)
 
         // When...
-        let event = MockEvent(startAt: start, endAt: end)
+        let event = MockEvent(start: start, end: end)
 
         // Then...
         #expect(
@@ -67,8 +67,8 @@ struct SchedulableTests {
         let end2 = start2.addingTimeInterval(3600)
 
         // When...
-        let event1 = MockEvent(startAt: start1, endAt: end1)
-        let event2 = MockEvent(startAt: start2, endAt: end2)
+        let event1 = MockEvent(start: start1, end: end1)
+        let event2 = MockEvent(start: start2, end: end2)
 
         // Then...
         #expect(

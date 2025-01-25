@@ -56,7 +56,7 @@ swift test
 ## Documentation
 
 For detailed API documentation and more usage examples, visit the [Models][docs] documentation
-section.  For project documentation, refer to the files listed in the subsections that follow.
+site.  For project documentation, refer to the files listed in the subsections that follow.
 
 ### Community Health
 

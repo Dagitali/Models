@@ -23,8 +23,8 @@ struct MockTimestamp: Timestampable {
     // MARK: Properties
 
     // Optional
-    var createdAt: Date?
-    var updatedAt: Date?
+    var createdDate: Date?
+    var updatedDate: Date?
 }
 
 // MARK: - Tests
@@ -36,7 +36,7 @@ struct TimestampableTests {
     // MARK: Protocol
 
     /// Tests the `updateTimestamps()` method, where `updateTimestamps` sets
-    /// both `createdAt` and `updatedAt` when `createdAt` is initially `nil`.
+    /// both `createdDate` and `updatedDate` when `createdDate` is initially `nil`.
     ///
     /// This ensures the method correctly initializes timestamps when the
     /// model is first updated.
@@ -50,21 +50,21 @@ struct TimestampableTests {
 
         // Then...
         #expect(
-            timestamp.createdAt != nil,
-            "createdAt should not be nil after updateTimestamps."
+            timestamp.createdDate != nil,
+            "createdDate should not be nil after updateTimestamps."
         )
         #expect(
-            timestamp.updatedAt != nil,
-            "updatedAt should not be nil after updateTimestamps."
+            timestamp.updatedDate != nil,
+            "updatedDate should not be nil after updateTimestamps."
         )
         #expect(
-            timestamp.createdAt == timestamp.updatedAt,
-            "createdAt and updatedAt should be equal if the model is newly created."
+            timestamp.createdDate == timestamp.updatedDate,
+            "createdDate and updatedDate should be equal if the model is newly created."
         )
     }
 
     /// Tests the `updateTimestamps()` method, where `updateTimestamps` updates
-    /// only `updatedAt` while keeping `createdAt` unchanged when `createdAt`
+    /// only `updatedDate` while keeping `createdDate` unchanged when `createdDate`
     /// is already set.
     ///
     /// This ensures the method correctly handles updates  without altering the
@@ -73,28 +73,28 @@ struct TimestampableTests {
     func testUpdateTimestamps_whenCreatedAtIsNotNil_updatesOnlyUpdatedAt() {
         // Given...
         let initialDate = Date(timeIntervalSinceNow: -3600) // 1 hour ago
-        var timestamp = MockTimestamp(createdAt: initialDate, updatedAt: initialDate)
+        var timestamp = MockTimestamp(createdDate: initialDate, updatedDate: initialDate)
 
         // When...
         timestamp.updateTimestamps()
 
         // Then...
         #expect(
-            timestamp.createdAt == initialDate,
-            "createdAt should not change after calling updateTimestamps if it is already set."
+            timestamp.createdDate == initialDate,
+            "createdDate should not change after calling updateTimestamps if it is already set."
         )
         #expect(
-            timestamp.updatedAt != initialDate,
-            "updatedAt should be updated to the current date."
+            timestamp.updatedDate != initialDate,
+            "updatedDate should be updated to the current date."
         )
         #expect(
-            timestamp.updatedAt! > initialDate,
-            "updatedAt should be a later date than the initial date."
+            timestamp.updatedDate! > initialDate,
+            "updatedDate should be a later date than the initial date."
         )
     }
 
-    /// Tests the `updateTimestamps()` method, where `createdAt` remains
-    /// constant across multiple calls to `updateTimestamps` while `updatedAt`
+    /// Tests the `updateTimestamps()` method, where `createdDate` remains
+    /// constant across multiple calls to `updateTimestamps` while `updatedDate`
     /// is updated each time.
     ///
     /// This ensures the method behaves consistently across repeated updates.
@@ -105,27 +105,27 @@ struct TimestampableTests {
 
         // When...
         timestamp.updateTimestamps()
-        let firstUpdateTime = timestamp.updatedAt
+        let firstUpdateTime = timestamp.updatedDate
 
         // Simulate some delay.
         Thread.sleep(forTimeInterval: 0.5)
 
         // Simulate an update.
         timestamp.updateTimestamps()
-        let secondUpdateTime = timestamp.updatedAt
+        let secondUpdateTime = timestamp.updatedDate
 
         // Then...
         #expect(
-            timestamp.createdAt != nil,
-            "createdAt should not be nil after multiple updates."
+            timestamp.createdDate != nil,
+            "createdDate should not be nil after multiple updates."
         )
         #expect(
-            timestamp.createdAt == firstUpdateTime,
-            "createdAt should remain constant after multiple updates."
+            timestamp.createdDate == firstUpdateTime,
+            "createdDate should remain constant after multiple updates."
         )
         #expect(
             firstUpdateTime != secondUpdateTime,
-            "updatedAt should change after subsequent updates."
+            "updatedDate should change after subsequent updates."
         )
     }
 }

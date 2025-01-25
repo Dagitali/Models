@@ -25,22 +25,22 @@ import SwiftUI
 /// handling of these timestamps in your app.
 public protocol Timestampable {
     /// The timestamp when the model was created.
-    var createdAt: Date? { get set }
+    var createdDate: Date? { get set }
 
     /// The timestamp when the model was last updated.
-    var updatedAt: Date? { get set }
+    var updatedDate: Date? { get set }
 }
 
 // MARK: - Public (Protocol Defaults)
 
 public extension Timestampable {
-    /// Updates the `createdAt` and `updatedAt` timestamps for the model.
+    /// Updates the `createdDate` and `updatedDate` timestamps for the model.
     ///
-    /// - If `createdAt` is `nil`, it is set to the current date and time.
-    /// - `updatedAt` is always updated to the current date and time.
+    /// - If `createdDate` is `nil`, it is set to the current date and time.
+    /// - `updatedDate` is always updated to the current date and time.
     mutating func updateTimestamps() {
         let now = Date()
-        if createdAt == nil { createdAt = now }
-        updatedAt = now
+        if createdDate == nil { createdDate = now }
+        updatedDate = now
     }
 }

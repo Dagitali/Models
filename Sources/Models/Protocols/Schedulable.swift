@@ -21,10 +21,10 @@ public protocol Schedulable {
     // MARK: Properties
 
     /// The start date and time of the event.
-    var startAt: Date { get }
+    var start: Date { get }
 
     /// The end date and time of the event.
-    var endAt: Date { get }
+    var end: Date { get }
 
     /// The duration of the event in seconds.
     var duration: TimeInterval { get }
@@ -44,12 +44,12 @@ public extension Schedulable {
     // MARK: Computed Properties
 
     var duration: TimeInterval {
-        return endAt.timeIntervalSince(startAt)
+        return end.timeIntervalSince(start)
     }
 
     // MARK: Functions
 
     func isOverlapping(with other: Schedulable) -> Bool {
-        return (startAt < other.endAt && endAt > other.startAt)
+        return (start < other.end && end > other.start)
     }
 }

@@ -23,6 +23,11 @@ maintainability, and adopt standardized patterns for data models in modern Swift
 Provide reusable, protocol-oriented abstractions for formalizing lightweight patterns found in
 common data models.
 
+* `Locatable`
+* `Personable`
+* `Schedulable`
+* `Timestampable`
+
 ## Installation
 
 ### Using Swift Package Manager (SPM)

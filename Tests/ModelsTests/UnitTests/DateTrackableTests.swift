@@ -13,18 +13,31 @@
 */
 
 import Foundation
+import SwiftData
 import Testing
 @testable import Models
 
 // MARK: - Fixtures
 
-// A mock conforming to `DateTrackable`.
-struct MockTimestamp: DateTrackable {
+/// A mock conforming to `DateTrackable`.
+@Model
+final class MockPersistentModel: DateTrackable {
     // MARK: Properties
 
-    // Optional
-    var createdAt: Date?
-    var updateAt: Date?
+    // Required
+    var name: String
+    private(set) var createdAt: Date
+    var updatedAt: Date
+
+    // MARK: Initialization
+
+    init(name: String) {
+        self.name = name
+
+        let date = Date()
+        self.createdAt = date
+        self.updatedAt = date
+    }
 }
 
 // MARK: - Tests
@@ -34,97 +47,86 @@ struct MockTimestamp: DateTrackable {
 struct DateTrackableTests {
     // MARK: Protocol
 
-    /// Tests the `trackDate()` method, where `trackDate` sets both `createdAt`
-    /// and `updatedAt` when `createdAt` is initially `nil`.
+    /// Tests the `update()` method.
     ///
-    /// This ensures the method correctly initializes timestamps when the model
-    /// is first updated.
+    /// This ensures the method correctly updates.
     @Test
-    func testUpdateDateTracker_whenCreatedAtIsNil_setsCreatedAtAndUpdatedAt() {
+    func testMockDateTrackable() {
         // Given...
-        var timestamp = MockTimestamp()
-
-        // When...
-        timestamp.trackDate()
+        let timestamp = MockPersistentModel(name: "John Doe")
 
         // Then...
         #expect(
-            timestamp.createdAt != nil,
-            "createdAt should not be nil after trackDate()."
-        )
-        #expect(
-            timestamp.updateAt != nil,
-            "updatedAt should not be nil after trackDate()."
-        )
-        #expect(
-            timestamp.createdAt == timestamp.updateAt,
+            timestamp.createdAt == timestamp.updatedAt,
             "createdAt and updatedAt should be equal if the model is newly created."
         )
     }
 
-    /// Tests the `trackDate()` method, where `trackDate` updates only
-    /// `updatedAt` while keeping `createdAt` unchanged when `createdAt` is
-    /// already set.
+    /// Tests the `update()` method.
     ///
-    /// This ensures the method correctly handles updates without altering the
-    /// original creation timestamp.
+    /// This ensures the method correctly updates the property of interest and
+    /// `updatedAt` but not `createdAt`.
     @Test
-    func testTrackDate_whenCreatedAtIsNotNil_updatesOnlyUpdatedAt() {
+    func testUpdate_persistentModel() {
         // Given...
-        let initialDate = Date(timeIntervalSinceNow: -3600) // 1 hour ago
-        var timestamp = MockTimestamp(createdAt: initialDate, updateAt: initialDate)
-
-        // When...
-        timestamp.trackDate()
+        var mock = MockPersistentModel(name: "John Doe")
 
         // Then...
         #expect(
-            timestamp.createdAt == initialDate,
-            "createdAt should not change after calling trackDate() if it is already set."
+            mock.name == "John Doe",
+            "name should be John Doe."
         )
         #expect(
-            timestamp.updateAt != initialDate,
-            "updatedAt should be updated to the current date."
+            mock.updatedAt == mock.createdAt,
+            "updatedAt and createdAt should be equal if the model is newly created."
         )
-        #expect(
-            timestamp.updateAt! > initialDate,
-            "updatedAt should be a later date than the initial date."
-        )
-    }
-
-    /// Tests the `trackDate()` method, where `createdAt` remains constant
-    /// across multiple calls to `trackDate` while `updatedAt` is updated each
-    /// time.
-    ///
-    /// This ensures the method behaves consistently across repeated updates.
-    @Test
-    func testTrackDate_multipleUpdates_keepCreatedAtConstant() {
-        // Given...
-        var timestamp = MockTimestamp()
 
         // When...
-        timestamp.trackDate()
-        let firstUpdateTime = timestamp.updateAt
+        mock.updatedAt = .now
+        let firstUpdateTime = mock.updatedAt
 
-        // Simulate some delay.
+        // Then...
+        #expect(
+            mock.name == "Jane Doe",
+            "name should be Jane Doe."
+        )
+        #expect(
+            mock.updatedAt > mock.createdAt,
+            "updatedAt should be more recent than createdAt after updating a property."
+        )
+
+        // When...
         Thread.sleep(forTimeInterval: 0.5)
-
-        // Simulate an update.
-        timestamp.trackDate()
-        let secondUpdateTime = timestamp.updateAt
+        mock.update(forKey: \.name, to: "Jane Doe")
+        let firstUpdateTime = mock.updatedAt
 
         // Then...
         #expect(
-            timestamp.createdAt != nil,
-            "createdAt should not be nil after multiple updates."
+            mock.name == "Jane Doe",
+            "name should be Jane Doe."
         )
         #expect(
-            timestamp.createdAt == firstUpdateTime,
-            "createdAt should remain constant after multiple updates."
+            mock.updatedAt > mock.createdAt,
+            "updatedAt should be more recent than createdAt after updating a property."
+        )
+
+        // When...
+        Thread.sleep(forTimeInterval: 0.5)
+        mock.update(forKey: \.name, to: "Mary Jane Doe")
+        let secondUpdateTime = mock.updatedAt
+
+        // Then...
+        #expect(
+            mock.name == "Mary Jane Doe",
+            "name should be Mary Jane Doe."
         )
         #expect(
-            firstUpdateTime != secondUpdateTime,
-            "updatedAt should change after subsequent updates."
+            mock.updatedAt > mock.createdAt,
+            "updatedAt should be more recent than createdAt after updating a property."
+        )
+        #expect(
+            secondUpdateTime > firstUpdateTime,
+            "updatedAt should be more recent than createdAt after updating a property."
         )
     }
 }

@@ -11,9 +11,16 @@
  Abstract:
  A protocol for conforming types to track when such types were created and
  updated.
+
+ References:
+ 1. https://fatbobman.com/en/posts/unveiling-the-data-modeling-principles-of-
+    swiftdata/
+ 2. https://www.hackingwithswift.com/quick-start/swiftdata/how-to-create-
+    derived-attributes-with-swiftdata
 */
 
 import Foundation
+import SwiftData
 
 // MARK: - Public
 
@@ -23,23 +30,25 @@ import Foundation
 /// This protocol defines properties that can be adopted by models as data
 /// management metadata.
 public protocol DateTrackable {
-    /// When the model was created.
-    var createdAt: Date? { get set }
+    /// The `Date` when an instance of the conforming type was created.
+    var createdAt: Date { get }
 
-    /// When the model was last updated.
-    var updateAt: Date? { get set }
+    /// The `Date` when an iinstance of the conforming type was last updated.
+    var updatedAt: Date { get set }
 }
 
 // MARK: - Public (Protocol Defaults)
 
-public extension DateTrackable {
-    /// Updates the `createdAt` and `updatedAt` properties.
-    ///
-    /// - If `createdAt` is `nil`, it is set to the current date and time.
-    /// - `updatedAt` is always updated to the current date and time.
-    mutating func trackDate() {
-        let now = Date()
-        if createdAt == nil { createdAt = now }
-        updateAt = now
+public extension DateTrackable where Self : PersistentModel {
+    /// Tracks when an instance of the conforming type was last updated.
+    mutating func update<Value>(
+        forKey keyPath: ReferenceWritableKeyPath<Self, Value>,
+        to newValue: Value
+    ) {
+        self[keyPath: keyPath] = newValue
+
+        if !isDeleted {
+            updatedAt = .now
+        }
     }
 }

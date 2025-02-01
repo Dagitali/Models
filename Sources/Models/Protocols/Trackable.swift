@@ -39,12 +39,27 @@ public protocol Trackable {
 
 // MARK: - Public (Protocol Defaults)
 
+public extension Trackable {
+    /// Tracks when an instance of the conforming type was last updated.
+    mutating func update<Value>(forKey keyPath: WritableKeyPath<Self, Value>, to newValue: Value) {
+        self[keyPath: keyPath] = newValue
+
+        updatedAt = .now
+    }
+}
+
 public extension Trackable where Self : PersistentModel {
     /// Tracks when an instance of the conforming type was last updated.
-    mutating func update<Value>(
-        forKey keyPath: ReferenceWritableKeyPath<Self, Value>,
-        to newValue: Value
-    ) {
+    mutating func update<Value>(forKey keyPath: ReferenceWritableKeyPath<Self, Value>, to newValue: Value) {
+        self[keyPath: keyPath] = newValue
+
+        if !isDeleted {
+            updatedAt = .now
+        }
+    }
+
+    /// Tracks when an instance of the conforming type was last updated.
+    mutating func update<Value>(forKey keyPath: WritableKeyPath<Self, Value>, to newValue: Value) {
         self[keyPath: keyPath] = newValue
 
         if !isDeleted {

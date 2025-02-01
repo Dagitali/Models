@@ -1,10 +1,10 @@
-# create-release.yml
+# post-release.yml
 # Models
 #
 # Copyright © 2025 Dagitali LLC. All rights reserved.
 #
 # A GitHub Actions workflow file that automates part of the GitFlow workflow.
-# Specificially, it:
+# Specifically, it:
 #
 # 1. Autolabels the `release` and `hotfix` branches, according to the current
 #    branch name.
@@ -50,7 +50,7 @@ on:
       - closed
       - labeled
 
-name: Release workflows
+name: Post release
 
 jobs:
   release_workflow:

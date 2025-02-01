@@ -1,5 +1,5 @@
 //
-//  DateTrackable.swift
+//  Trackable.swift
 //  Models
 //
 //  Copyright © 2025 Dagitali LLC. All rights reserved.
@@ -29,7 +29,7 @@ import SwiftData
 ///
 /// This protocol defines properties that can be adopted by models as data
 /// management metadata.
-public protocol DateTrackable {
+public protocol Trackable {
     /// The `Date` when an instance of the conforming type was created.
     var createdAt: Date { get }
 
@@ -39,7 +39,7 @@ public protocol DateTrackable {
 
 // MARK: - Public (Protocol Defaults)
 
-public extension DateTrackable where Self : PersistentModel {
+public extension Trackable where Self : PersistentModel {
     /// Tracks when an instance of the conforming type was last updated.
     mutating func update<Value>(
         forKey keyPath: ReferenceWritableKeyPath<Self, Value>,

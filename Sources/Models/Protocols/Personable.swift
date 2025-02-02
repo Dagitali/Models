@@ -30,7 +30,7 @@ public protocol Personable {
     var fullName: String { get }
 
     /// The date of birth of the person, if available.
-    var dateOfBirth: Date? { get }
+    var birthDate: Date? { get }
 
     // MARK: Functions
 
@@ -53,9 +53,9 @@ public extension Personable {
     // MARK: Functions
 
     func age(asOf date: Date = Date()) -> Int? {
-        guard let dateOfBirth = dateOfBirth else { return nil }
+        guard let birthDate = birthDate else { return nil }
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.year], from: dateOfBirth, to: date)
+        let components = calendar.dateComponents([.year], from: birthDate, to: date)
 
         return components.year
     }

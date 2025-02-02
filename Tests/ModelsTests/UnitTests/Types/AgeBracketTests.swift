@@ -9,7 +9,7 @@
  See the LICENSE.txt file for this package’s licensing information.
 
  Abstract:
- A test suite to validate the functionality of the `Personable` protocol.
+ A test suite to validate the functionality of the `AgeBracket` enum.
 */
 
 import Foundation

@@ -90,7 +90,7 @@ extension AgeBracket {
         }
     }
 
-    /// Determines if the age bracket is considered an adult category.
+    /// Indicates whether the age bracket is categorized as adult.
     var isAdult: Bool {
         switch self {
         case .youngAdultCDC, .adultCDC, .middleAgedCDC, .seniorCDC:

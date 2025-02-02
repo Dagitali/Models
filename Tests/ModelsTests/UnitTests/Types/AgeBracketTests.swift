@@ -25,7 +25,7 @@ struct AgeBracketTests {
 
     /// Tests the `isAdult` property.
     ///
-    /// This ensures the property correctly computes the adult status.
+    /// This ensures the property correctly indicates that the age bracket is categorized as adult.
     @Test
     func testIsAdult() {
         // Given...

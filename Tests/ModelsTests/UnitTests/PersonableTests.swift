@@ -27,7 +27,7 @@ struct MockPerson: Personable {
     var lastName: String
 
     // Optional
-    var dateOfBirth: Date?
+    var birthDate: Date?
 }
 
 // MARK: - Tests
@@ -61,7 +61,7 @@ struct PersonableTests {
     func testAge() {
         // Given...
         let birthday = Calendar.current.date(byAdding: .year, value: -30, to: Date())!
-        let person = MockPerson(firstName: "Jane", lastName: "Doe", dateOfBirth: birthday)
+        let person = MockPerson(firstName: "Jane", lastName: "Doe", birthDate: birthday)
 
         // Then...
         #expect(

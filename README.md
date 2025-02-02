@@ -26,7 +26,7 @@ common data models.
 * `Locatable`
 * `Personable`
 * `Schedulable`
-* `Timestampable`
+* `Trackable`
 
 ## Installation
 

@@ -108,11 +108,13 @@ extension AgeBracket {
 // MARK: - Functions
 
 extension AgeBracket {
-    /// Determines the `AgeBracket` for a given age based on the specified organization.
+    /// Determines the `AgeBracket` for a given age based on the specified
+    /// organization.
     ///
     /// - Parameters:
     ///   - age: The age as a numeric type (`Int`, `Float`, `Double`, etc.).
-    ///   - organization: The organization whose age brackets to use. Defaults to `.cdc`.
+    ///   - organization: The organization whose age brackets to use. Defaults
+    ///     to `.cdc`.
     /// - Returns: The corresponding `AgeBracket`.
     ///
     /// ## Example:
@@ -126,7 +128,8 @@ extension AgeBracket {
         age: T,
         organization: Organization = .cdc
     ) -> AgeBracket {
-        let ageValue = Double("\(age)") ?? 0.0  // Convert to `Double` safely
+        // Convert to `Double` safely.
+        let ageValue = Double("\(age)") ?? 0.0
 
         switch organization {
         case .cdc:

@@ -51,7 +51,8 @@ struct AgeBracketTests {
 
     /// Tests the `from` function.
     ///
-    /// This ensures the function correctly selects the age bracket for a given age and organization. regardless of the data type used for the age.
+    /// This ensures the function correctly selects the age bracket for a given
+    /// age and organization. regardless of the data type used for the age.
     @Test
     func testFrom_NumericTypes() {
         // Given...

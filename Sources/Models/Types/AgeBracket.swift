@@ -14,10 +14,10 @@ An enumeration for specifying a person's age bracket.
 
 import Foundation
 
-// MARK: - Enumerations
+// MARK: - Public
 
 /// An enumeration for specifying a person's age bracket.
-enum AgeBracket: String, CaseIterable, Codable {
+public enum AgeBracket: String, CaseIterable, Codable {
 
     // MARK: Centers for Disease Control (CDC)
     case infantCDC, toddlerCDC, preschoolerCDC, childCDC, teenagerCDC
@@ -35,9 +35,9 @@ enum AgeBracket: String, CaseIterable, Codable {
     enum Organization { case cdc, who, census }
 }
 
-// MARK: - Computed Properties
+// MARK: - Publc (Computed Properties)
 
-extension AgeBracket {
+public extension AgeBracket {
     /// Returns a human-friendly name for the age bracket.
     var name: String {
         switch self {
@@ -105,7 +105,7 @@ extension AgeBracket {
     }
 }
 
-// MARK: - Functions
+// MARK: - Public (Functions)
 
 extension AgeBracket {
     /// Determines the `AgeBracket` for a given age based on the specified

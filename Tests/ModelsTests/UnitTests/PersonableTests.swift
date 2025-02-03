@@ -126,7 +126,7 @@ struct PersonableTests {
         let expected = 30
 
         // When...
-        let actual = adult.age()
+        let actual = adult.age()!
 
         // Then...
         #expect(

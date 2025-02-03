@@ -14,10 +14,10 @@ An enumeration for specifying a person's gender.
 
 import Foundation
 
-// MARK: - Enumerations
+// MARK: - Public
 
 /// An enumeration for specifying a person's gender.
-enum Gender: String, CaseIterable, Codable {
+public enum Gender: String, CaseIterable, Codable {
     /// Represents a female gender identity.
     case female
 
@@ -31,9 +31,9 @@ enum Gender: String, CaseIterable, Codable {
     case unspecified
 }
 
-// MARK: - Computed Properties
+// MARK: - Public (Computed Properties)
 
-extension Gender {
+public extension Gender {
     var name: String {
         return switch self {
         case .nonBinary: "Non-binary"

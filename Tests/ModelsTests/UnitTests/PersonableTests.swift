@@ -45,17 +45,37 @@ struct PersonableTests {
         firstName: "John",
         lastName: "Doe",
         nameSuffix: "Jr.",
-        birthDate: Calendar.current.date(byAdding: .year, value: -30, to: Date())!
+        birthDate: Calendar.current.date(byAdding: .year, value: -30, to: .now)!
     )
     let child = MockPerson(
         firstName: "Jane",
         lastName: "Doe",
-        birthDate: Calendar.current.date(byAdding: .year, value: -10, to: Date())!
+        birthDate: Calendar.current.date(byAdding: .year, value: -10, to: .now)!
     )
 
-    // MARK: Properties
+    // MARK: Computed Properties
 
-    /// Tests the `fullName` property.
+    /// Tests the `birthday` computed property.
+    ///
+    /// This ensures it correctly formats the birth date.
+    @Test
+    func testBirthday() {
+        // Given...
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        let expected = formatter.string(from: .now)
+
+        // When...
+        let actual = adult.birthday
+
+        // Then...
+        #expect(
+            actual == expected,
+            "The birthday should be \(expected), not \(actual)."
+        )
+    }
+
+    /// Tests the `fullName` computed property.
     ///
     /// This ensures the property correctly combines the first and last names.
     @Test
@@ -69,11 +89,11 @@ struct PersonableTests {
         // Then...
         #expect(
             adult.fullName == "John Doe",
-            "The full name (\(actual)) should equal the expected full name (\(expected))."
+            "The full name should be \(expected), not \(actual)."
         )
     }
 
-    /// Tests the `initials` property.
+    /// Tests the `initials` computed property.
     ///
     /// This ensures the property correctly abbreviates the name.
     @Test
@@ -87,11 +107,11 @@ struct PersonableTests {
         // Then...
         #expect(
             actual == expected,
-            "The actual initials (\(actual)) should equal the expected initials (\(expected))."
+            "The initials should be \(expected), not \(actual)."
         )
     }
 
-    /// Tests the `isAdult` property.
+    /// Tests the `isAdult` computed property.
     ///
     /// This ensures the property correctly computes the adult status.
     @Test
@@ -107,15 +127,15 @@ struct PersonableTests {
         // Then...
         #expect(
             actualA == expectedA,
-            "The adult's actual adult status (\(actualA)) should equal their expected adult status (\(expectedA))."
+            "The adult's adult status should be \(expectedA), not \(actualA)."
         )
         #expect(
             actualC == expectedC,
-            "The child's actual adult status (\(actualC)) should equal their expected adult status (\(expectedC))."
+            "The child's adult status should be \(expectedC), not \(actualC)."
         )
     }
 
-    // MARK: Functions
+    // MARK: Methods
 
     /// Tests the `age()` method.
     ///
@@ -131,7 +151,28 @@ struct PersonableTests {
         // Then...
         #expect(
             actual == expected,
-            "The actual age (\(actual)) should equal the expected age (\(expected))."
+            "The age should be \(expected), not \(actual)."
+        )
+    }
+
+    /// Tests the `formattedBirthDate()` method.
+    ///
+    /// This ensures it correctly formats the birth date.
+    @Test
+    func testFormattedBirthDate() {
+        // Given...
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        let date = Calendar.current.date(byAdding: .year, value: -30, to: .now)!
+        let expected = formatter.string(from: date)
+
+        // When...
+        let actual = adult.formattedBirthDate(style: .medium)
+
+        // Then...
+        #expect(
+            actual == expected,
+            "The  birth date should be \(expected), not \(actual)."
         )
     }
 
@@ -153,15 +194,15 @@ struct PersonableTests {
         // Then...
         #expect(
             actualL == expectedL,
-            "The actual formatted name (\(actualL)) should equal the expected formatted name (\(expectedL))."
+            "The formatted name should be \(expectedL), not \(actualL)."
         )
         #expect(
             actualM == expectedM,
-            "The actual formatted name (\(actualM)) should equal the expected formatted name (\(expectedM))."
+            "The formatted name should be \(expectedM), not \(actualM)."
         )
         #expect(
             actualS == expectedS,
-            "The actual formatted name (\(actualS) should equal the expected formatted name (\(expectedS))."
+            "The formatted name should be \(expectedS), not \(actualS)."
         )
     }
 }

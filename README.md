@@ -18,7 +18,7 @@ maintainability, and adopt standardized patterns for data models in modern Swift
 
 ## Features
 
-🛠 **Custom Protocols**
+📜 **Custom Protocols**
 
 Provide reusable, protocol-oriented abstractions for formalizing lightweight patterns found in
 common data models.
@@ -27,6 +27,14 @@ common data models.
 * `Personable`
 * `Schedulable`
 * `Trackable`
+
+🗂️ **Custom Types**
+
+Standardize structured and enumerated data representations that encapsulate
+domain-specific concepts with type safety and clarity.
+
+* `AgeBracket`
+* `Gender`
 
 ## Installation
 

@@ -18,8 +18,8 @@ import Foundation
 
 /// A protocol for conforming types to model a person.
 ///
-/// This protocol provides essential properties and methods for representing a person,
-/// including their name, birthdate, gender, and various computed attributes.
+/// This protocol provides essential properties and methods for representing a
+/// person, including their name, birthdate, and gender.
 ///
 /// ## Example:
 /// ```swift
@@ -34,7 +34,13 @@ import Foundation
 ///     var gender: Gender?
 /// }
 ///
-/// let person = Person(firstName: "John", middleName: "A.", lastName: "Doe", birthDate: Date(), gender: .male)
+/// let person = Person(
+///     firstName: "John",
+///     middleName: "A.",
+///     lastName: "Doe",
+///     birthDate: Date(),
+///     gender: .male
+/// )
 /// print(person.fullName) // "John A. Doe"
 /// print(person.isAdult)  // true or false based on age
 /// ```
@@ -64,19 +70,25 @@ public protocol Personable {
 
     // MARK: Computed Properties
 
-    /// The person's full name, combining the first and last names, including middle name if available.
+    /// The person's birthday.
+    var birthday: String { get }
+
+    /// The person's full name, combining the first and last names, including
+    /// middle name if available.
     var fullName: String { get }
 
-    /// The person's initials , typically using the first letters of their names.
+    /// The person's initials , typically using the first letters of their
+    /// names.
     var initials: String { get }
 
     /// Determines whether the person is considered an adult (18+ years old).
     var isAdult: Bool { get }
 
-    // MARK: Functions
+    // MARK: Methods
 
     /// Calculates the age of the person as of a given date.
-    /// - Parameter date: The date to calculate the age relative to. Defaults to the current date.
+    /// - Parameter date: The date to calculate the age relative to. Defaults
+    ///   to the current date.
     /// - Returns: The age in years, or `nil` if the birth date is not set.
     ///
     /// Example:
@@ -86,7 +98,17 @@ public protocol Personable {
     /// ```
     func age(asOf date: Date) -> Int?
 
-    /// Returns a formatted full name in the specified style.
+    /// Returns a formatted birth date in the specified style.
+    /// - Parameter style: The desired date format.
+    /// - Returns: The formatted birthdate.
+    ///
+    /// Example:
+    /// ```swift
+    /// print(person.formattedBirthDate(style: .short)) // "11/23/37"
+    /// ```
+    func formattedBirthDate(style: DateFormatter.Style) -> String
+
+    /// Returns a formatted name in the specified style.
     /// - Parameter style: The desired name format.
     /// - Returns: The formatted full name.
     ///
@@ -103,15 +125,26 @@ public protocol Personable {
 
     /// Determines the time interval until the person's next birthday.
     /// - Parameter date: The reference date for calculation.
-    /// - Returns: The number of seconds until the next birthday, or `nil` if the birth date is not set.
+    /// - Returns: The number of seconds until the next birthday, or `nil` if
+    ///   the birth date is not set.
     func timeUntilNextBirthday(from date: Date) -> TimeInterval?
-
 }
 
 // MARK: - Public (Protocol Defaults)
 
 public extension Personable {
     // MARK: Computed Properties
+
+    var birthday: String {
+        if let birthDate {
+            let formatter = DateFormatter()
+            formatter.setLocalizedDateFormatFromTemplate("MMMM d")
+
+            return formatter.string(from: birthDate)
+        } else {
+            return "N/A"
+        }
+    }
 
     var fullName: String {
         let name = formattedName()
@@ -131,7 +164,7 @@ public extension Personable {
         return age >= 18
     }
 
-    // MARK: Functions
+    // MARK: Methods
 
     func age(asOf date: Date = Date()) -> Int? {
         guard let birthDate = birthDate else { return nil }
@@ -140,6 +173,17 @@ public extension Personable {
         let components = calendar.dateComponents([.year], from: birthDate, to: date)
 
         return components.year
+    }
+
+    func formattedBirthDate(style: DateFormatter.Style = .medium) -> String {
+        if let birthDate {
+            let formatter = DateFormatter()
+            formatter.dateStyle = style
+
+            return formatter.string(from: birthDate)
+        } else {
+            return "N/A"
+        }
     }
 
     func formattedName(style: PersonNameComponents.FormatStyle.Style = .medium) -> String {

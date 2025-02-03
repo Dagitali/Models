@@ -39,7 +39,6 @@ struct MockPerson: Personable {
 /// A test suite to validate the functionality of the `Personable` protocol.
 @Suite("Personable Tests")
 struct PersonableTests {
-
     // MARK: Mocks
 
     let adult = MockPerson(

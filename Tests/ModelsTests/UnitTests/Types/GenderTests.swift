@@ -21,6 +21,49 @@ import Testing
 /// A test suite to validate the functionality of the `Gender` enum.
 @Suite("Gender Tests")
 struct GenderTests {
+    // MARK: Protocol Conformance (CaseIterable)
+
+    /// Tests conformance to the `CaseIterable` protocol.
+    ///
+    /// This ensures all of the `Gender` cases are iterated.
+    @Test
+    func testAllCases() {
+        // Given...
+        let expected: [Gender] = [.female, .male, .nonBinary, .unspecified]
+
+        // When...
+        let actual = Gender.allCases
+
+        // Then...
+        #expect(
+            actual == expected,
+            "`Gender.allCases` does not contain all expected cases."
+        )
+    }
+
+    // MARK: Protocol Conformance (Codable)
+
+    /// Tests conformance to the `Codable` protocol.
+    ///
+    /// This ensures the `Gender` is both encodable and decodable.
+    @Test
+    func testCodable() throws {
+        // Given...
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+        let original = Gender.unspecified
+
+        // When...
+        let encoded = try encoder.encode(original)
+        let decoded = try decoder.decode(Gender.self, from: encoded)
+
+        // Then...
+        #expect(
+            original == decoded,
+            "Encoding/decoding failed for `Gender`."
+        )
+    }
+
     // MARK: Computed Properties
 
     /// Tests the `isFemale` property.
@@ -173,7 +216,76 @@ struct GenderTests {
 
     // MARK: Functions
 
-    /// Tests the `from` function.
+    /// Tests the `from` function with respect to an age bracket's boundaries.
+    ///
+    /// This ensures the function correctly selects the age bracket for a given
+    /// age and organization. even at age bracket's boundaries.
+    @Test
+    func testFrom_BoundaryConditions() {
+        // Given...
+        let expected1 = AgeBracket.toddlerCDC
+        let expected3 = AgeBracket.preschoolerCDC
+        let expected6 = AgeBracket.childCDC
+        let expected12 = AgeBracket.teenagerCDC
+        let expected18 = AgeBracket.youngAdultCDC
+        let expected25 = AgeBracket.adultCDC
+
+        // When...
+        let actual1 = AgeBracket.from(age: 1, organization: .cdc)
+        let actual3 = AgeBracket.from(age: 3, organization: .cdc)
+        let actual5dot9 = AgeBracket.from(age: 5.9, organization: .cdc)
+        let actual6 = AgeBracket.from(age: 6, organization: .cdc)
+        let actual11dot9 = AgeBracket.from(age: 11.9, organization: .cdc)
+        let actual12 = AgeBracket.from(age: 12, organization: .cdc)
+        let actual17dot9 = AgeBracket.from(age: 17.9, organization: .cdc)
+        let actual18 = AgeBracket.from(age: 18, organization: .cdc)
+        let actual24dot9 = AgeBracket.from(age: 24.9, organization: .cdc)
+        let actual25 = AgeBracket.from(age: 25, organization: .cdc)
+
+        // Then...
+        #expect(
+            actual1 == expected1,
+            "An age of 1 should return \(expected1), not \(actual1)."
+        )
+        #expect(
+            actual3 == expected3,
+            "An age of 3 should return \(expected3), not \(actual3)."
+        )
+        #expect(
+            actual5dot9 == expected3,
+            "An age of 5.9 should return \(expected3), not \(actual5dot9)."
+        )
+        #expect(
+            actual6 == expected6,
+            "An age of 6 should return \(expected6), not \(actual6)."
+        )
+        #expect(
+            actual11dot9 == expected6,
+            "An age of 11.9 should return \(expected6), not \(actual11dot9)."
+        )
+        #expect(
+            actual12 == expected12,
+            "An age of 12 should return \(expected12), not \(actual12)."
+        )
+        #expect(
+            actual17dot9 == expected12,
+            "An age of 17.9 should return \(expected12), not \(actual17dot9)."
+        )
+        #expect(
+            actual18 == expected18,
+            "An age of 18 should return \(expected18), not \(actual18)."
+        )
+        #expect(
+            actual24dot9 == expected18,
+            "An age of 24.9 should return \(expected18), not \(actual24dot9)."
+        )
+        #expect(
+            actual25 == expected25,
+            "An age of 25 should return \(expected25), not \(actual25)."
+        )
+    }
+
+    /// Tests the `from` function with respect to numeric types.
     ///
     /// This ensures the function correctly selects the age bracket for a given
     /// age and organization. regardless of the data type used for the age.

@@ -166,7 +166,7 @@ struct CountryTests {
     func testPreferred_Default() {
         // Given...
         let systemRegionCode = Locale.current.region?.identifier ?? "US"
-        let expected = Country.fromCode(systemRegionCode) ?? .us
+        let expected = Country.from(code: systemRegionCode) ?? .us
 
         // When...
         UserDefaults.standard.removeObject(forKey: "preferredCountry")
@@ -233,7 +233,7 @@ struct CountryTests {
 
     // MARK: Method Tests
 
-    /// Tests the `saveAsPreferred()`method.
+    /// Tests the `saveAsPreferred`method.
     ///
     /// This ensures the method correctly saves the country code as the
     /// preferred country.
@@ -263,9 +263,9 @@ struct CountryTests {
         let expectedNil: Country? = nil
 
         // When...
-        let actualUC = Country.fromCode("US")
-        let actualLC = Country.fromCode("us")
-        let actualNil = Country.fromCode("XX")
+        let actualUC = Country.from(code: "US")
+        let actualLC = Country.from(code: "us")
+        let actualNil = Country.from(code: "XX")
 
         // Then...
         #expect(

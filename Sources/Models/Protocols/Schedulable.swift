@@ -29,7 +29,7 @@ public protocol Schedulable {
     /// The duration of the event in seconds.
     var duration: TimeInterval { get }
 
-    // MARK: Functions
+    // MARK: Methods
 
     /// Checks whether this event overlaps with another conforming `Schedulable`
     /// instance.
@@ -47,7 +47,7 @@ public extension Schedulable {
         return end.timeIntervalSince(start)
     }
 
-    // MARK: Functions
+    // MARK: Methods
 
     func isOverlapping(with other: Schedulable) -> Bool {
         return (start < other.end && end > other.start)

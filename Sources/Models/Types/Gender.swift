@@ -6,10 +6,10 @@
 //
 
 /*
-See the LICENSE.txt file for this sample’s licensing information.
+ See the LICENSE.txt file for this sample’s licensing information.
 
-Abstract:
-An enumeration for specifying a person's gender.
+ Abstract:
+ An enumeration for specifying a person's gender.
 */
 
 import Foundation
@@ -34,8 +34,9 @@ public enum Gender: String, CaseIterable, Codable {
 // MARK: - Public (Computed Properties)
 
 public extension Gender {
+    /// Returns the gender's human-readable name.
     var name: String {
-        return switch self {
+        switch self {
         case .nonBinary: "Non-binary"
         case .unspecified: "Unspecified"
         default: rawValue.localizedCapitalized

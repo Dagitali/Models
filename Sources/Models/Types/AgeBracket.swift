@@ -6,10 +6,10 @@
 //
 
 /*
-See the LICENSE.txt file for this sample’s licensing information.
+ See the LICENSE.txt file for this sample’s licensing information.
 
-Abstract:
-An enumeration for specifying a person's age bracket.
+ Abstract:
+ An enumeration for specifying a person's age bracket.
 */
 
 import Foundation

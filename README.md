@@ -36,7 +36,7 @@ Define structured representations of geographic and administrative regions to st
 location-based data.
 
 * Enums
-  * AdministrativeZone
+  * `AdministrativeZone`
   * `Country`
 * Protocols
   * `Locatable`

@@ -18,25 +18,46 @@ maintainability, and adopt standardized patterns for data models in modern Swift
 
 ## Features
 
-📜 **Custom Protocols**
+Models provides reusable protocols and strongly typed data structures for common domains.  It
+enhances type safety, standardizes data representation, and promotes consistency across Swift-based
+projects.
 
-Provide reusable, protocol-oriented abstractions for formalizing lightweight patterns found in
-common data models.
+🎭 Events
 
-* `Locatable`
-* `Personable`
-* `Schedulable`
-* `Trackable`
+Encapsulate scheduling and tracking concepts to support time-based activities and event management.
 
-🗂️ **Custom Types**
+* Protocols
+  * `Schedulable`
+  * `Trackable`
 
-Standardize structured and enumerated data representations that encapsulate
-domain-specific concepts with type safety and clarity.
+🌍 Geography
 
-* `AdministrativeZone`
-* `AgeBracket`
-* `Country`
-* `Gender`
+Define structured representations of geographic and administrative regions to standardize
+location-based data.
+
+* Enums
+  * AdministrativeZone
+  * `Country`
+* Protocols
+  * `Locatable`
+
+🏷️ Metadata
+
+Provide abstractions for tracking record-level changes, ensuring data integrity and historical
+traceability.
+
+* Protocols
+  * `Trackable`
+
+👤 People
+
+Model individual and demographic characteristics to standardize identity-related data.
+
+* Enums
+  * `AgeBracket`
+  * `Gender`
+* Protocols
+  * `Personable`
 
 ## Installation
 

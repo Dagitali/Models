@@ -283,7 +283,7 @@ public enum Country: String, CaseIterable, Codable {
     ///
     /// - Parameter code: The ISO 3166-1 alpha-2 country code.
     init(code: String) {
-        self = Country.fromCode(code) ?? .us
+        self = Country.from(code: code) ?? .us
     }
 }
 
@@ -336,12 +336,12 @@ public extension Country {
     /// ```
     static var preferred: Country {
         if let savedCode = UserDefaults.standard.string(forKey: "preferredCountry"),
-           let country = Country.fromCode(savedCode) {
+           let country = Country.from(code: savedCode) {
             return country
         }
         let systemCode = Locale.current.region?.identifier ?? "US"
 
-        return Country.fromCode(systemCode) ?? .us
+        return Country.from(code: systemCode) ?? .us
     }
 }
 
@@ -375,7 +375,7 @@ public extension Country {
     ///
     /// - Parameter code: The ISO 3166-1 alpha-2 country code.
     /// - Returns: A `Country` instance if found, `nil` if not.
-    static func fromCode(_ code: String) -> Country? {
+    static func from(code: String) -> Country? {
         Country.allCases.first { $0.rawValue.caseInsensitiveCompare(code) == .orderedSame }
     }
 }

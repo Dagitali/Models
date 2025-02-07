@@ -56,7 +56,7 @@ struct LocatableTests {
         )
     }
 
-    // MARK: Functions
+    // MARK: Methods
 
     /// Tests the `distance()` method.
     ///

@@ -53,7 +53,7 @@ struct SchedulableTests {
         )
     }
 
-    // MARK: Functions
+    // MARK: Methods
 
     /// Tests the `overlap()` method.
     ///

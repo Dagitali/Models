@@ -102,7 +102,7 @@ struct AgeBracketTests {
         )
     }
 
-    // MARK: Functions
+    // MARK: Methods
 
     /// Tests the `from` function.
     ///

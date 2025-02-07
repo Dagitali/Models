@@ -30,7 +30,7 @@ public protocol Locatable {
     /// Returns the geographic coordinates of the location.
     var coordinates: CLLocationCoordinate2D { get }
 
-    // MARK: Functions
+    // MARK: Methods
 
     /// Calculates the distance from this location to another conforming
     /// `Locatable` instance.
@@ -48,7 +48,7 @@ public extension Locatable {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 
-    // MARK: Functions
+    // MARK: Methods
 
     func distance(from location: Locatable) -> CLLocationDistance {
         let currentLocation = CLLocation(

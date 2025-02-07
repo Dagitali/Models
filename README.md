@@ -33,7 +33,9 @@ common data models.
 Standardize structured and enumerated data representations that encapsulate
 domain-specific concepts with type safety and clarity.
 
+* `AdministrativeZone`
 * `AgeBracket`
+* `Country`
 * `Gender`
 
 ## Installation

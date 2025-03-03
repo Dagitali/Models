@@ -3,6 +3,19 @@
 A Swift package that includes an integrated collection Swift protocols for common data model
 patterns.
 
+- [Models](#models)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Installation](#installation)
+    - [Using Swift Package Manager (SPM)](#using-swift-package-manager-spm)
+  - [Testing](#testing)
+  - [Documentation](#documentation)
+    - [Community Health](#community-health)
+    - [Project](#project)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
+
 ## Overview
 
 Models is a Swift package designed to provide lightweight, reusable protocols for common data

@@ -1,5 +1,19 @@
 # Models
 
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Dagitali/Models?sort=semver)
+![Build Status](https://github.com/Dagitali/Models/actions/workflows/lint.yml/badge.svg)
+![Build Status](https://github.com/Dagitali/Models/actions/workflows/test.yml/badge.svg)
+![Build Status](https://github.com/Dagitali/Models/actions/workflows/release.yml/badge.svg)
+![Build Status](https://github.com/Dagitali/Models/actions/workflows/document.yml/badge.svg)
+![Build Status](https://github.com/Dagitali/Models/actions/workflows/publish.yml/badge.svg)
+![Codecov](https://codecov.io/gh/Dagitali/Models/branch/main/graph/badge.svg)
+![GitHub](https://img.shields.io/github/license/Dagitali/Models)
+![GitHub issues](https://img.shields.io/github/issues/Dagitali/Models)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Dagitali/Models)
+![GitHub top language](https://img.shields.io/github/languages/top/Dagitali/Models)
+![GitHub repo size](https://img.shields.io/github/repo-size/Dagitali/Models)
+![GitHub contributors](https://img.shields.io/github/contributors/Dagitali/Models)
+
 A Swift package that includes an integrated collection Swift protocols for common data model
 patterns.
 

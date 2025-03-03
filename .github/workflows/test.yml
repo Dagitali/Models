@@ -16,25 +16,26 @@
 # 6. https://github.com/maxim-lobanov/setup-xcode
 # 7. https://github.com/maxim-lobanov/setup-xcode/issues/90
 # 8. https://docs.github.com/en/actions
+# 9. https://docs.github.com/en/actions/use-cases-and-examples/
+#    building-and-testing/building-and-testing-swift
 
 ---
 
-name: Test Swift package to be released
+name: Test
 
 on:
-  pull_request:
+  pull_request:       # Allow automatic triggering for PRs.
     branches:
-      - bugfix/**
-      - feature/**
+      - 'bugfix/**'
+      - 'feature/**'
     types:
       - opened
       - closed
       - labeled
-  push:               # Allow automatic triggering.
+  push:               # Allow automatic triggering for pushes.
     branches:
       - develop
       - main
-      - versions
   workflow_dispatch:  # Allow manual triggering.
 
 jobs:

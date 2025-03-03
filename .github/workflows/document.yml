@@ -1,4 +1,4 @@
-# generate-swift-package-api-docs.yml
+# document.yml
 # Models
 #
 # Copyright © 2025 Dagitali LLC. All rights reserved.
@@ -22,7 +22,7 @@
 
 ---
 
-name: Generate Swift package API docs
+name: Document
 
 on:
   push:               # Allow automatic triggering for pushes.
@@ -54,7 +54,7 @@ env:
 
 # Build and deploy the DocC documentation.
 jobs:
-  deploy:
+  document:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -70,8 +70,7 @@ location-based data.
 
 🏷️ Metadata
 
-Provide abstractions for tracking record-level changes, ensuring data integrity and historical
-traceability.
+Enable tracking record-level changes, ensuring data integrity and historical traceability.
 
 * Protocols
   * `Trackable`
@@ -85,6 +84,14 @@ Model individual and demographic characteristics to standardize identity-related
   * `Gender`
 * Protocols
   * `Personable`
+
+🎨 UI
+
+Ensure consistent representation of models across user interfaces using visual elements and system
+imagery.
+
+* Protocol
+  * `SystemImageRepresentable`
 
 ## Installation
 

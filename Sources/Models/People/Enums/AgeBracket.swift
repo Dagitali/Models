@@ -17,6 +17,7 @@ import Foundation
 // MARK: - Public
 
 /// An enumeration for specifying a person's age bracket.
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public enum AgeBracket: String, CaseIterable, Codable {
 
     // MARK: Centers for Disease Control (CDC)
@@ -37,6 +38,7 @@ public enum AgeBracket: String, CaseIterable, Codable {
 
 // MARK: - Publc (Computed Properties)
 
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension AgeBracket {
     /// Returns a human-friendly name for the age bracket.
     var name: String {
@@ -107,6 +109,7 @@ public extension AgeBracket {
 
 // MARK: - Public (Functions)
 
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 extension AgeBracket {
     /// Determines the `AgeBracket` for a given age based on the specified
     /// organization.

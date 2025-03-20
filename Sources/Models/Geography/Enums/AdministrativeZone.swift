@@ -29,6 +29,7 @@ import Foundation
 /// print(zone.name) // "California"
 /// print(zone.country.name) // "United States"
 /// ```
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public enum AdministrativeZone: Codable {
     case state(name: String, country: Country)
     case territory(name: String, country: Country)
@@ -42,6 +43,7 @@ public enum AdministrativeZone: Codable {
 
 // MARK: - Public (Computed Properties)
 
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension AdministrativeZone {
     // MARK: Instance Properties
 
@@ -94,6 +96,7 @@ public extension AdministrativeZone {
 
 // MARK: - Public (Methods)
 
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension AdministrativeZone {
     // MARK: Instance Methods
 

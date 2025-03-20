@@ -44,6 +44,7 @@ import Foundation
 /// print(person.fullName) // "John A. Doe"
 /// print(person.isAdult)  // true or false based on age
 /// ```
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public protocol Personable {
     // MARK: Stored Properties
 
@@ -132,6 +133,7 @@ public protocol Personable {
 
 // MARK: - Public (Protocol Defaults)
 
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension Personable {
     // MARK: Computed Properties
 

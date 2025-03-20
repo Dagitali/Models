@@ -31,6 +31,7 @@ import Foundation
 ///
 /// let tab = Tab(name: "Events", systemImageName: "calendar")
 /// ```
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public protocol SystemImageRepresentable {
 
     /// The name of the SF Symbol that visually represents an instance

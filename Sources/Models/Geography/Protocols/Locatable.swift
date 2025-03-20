@@ -18,6 +18,7 @@ import Foundation
 // MARK: - Public
 
 /// A protocol for conforming types to model a geographical location.
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public protocol Locatable {
     // MARK: Properties
 
@@ -41,6 +42,7 @@ public protocol Locatable {
 
 // MARK: - Public (Protocol Defaults)
 
+@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension Locatable {
     // MARK: Computed Properties
 

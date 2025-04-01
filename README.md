@@ -20,6 +20,11 @@ patterns.
 - [Models](#models)
   - [Overview](#overview)
   - [Features](#features)
+    - [Events](#events)
+    - [Geography](#geography)
+    - [Metadata](#metadata)
+    - [People](#people)
+    - [UI](#ui)
   - [Installation](#installation)
     - [Using Swift Package Manager (SPM)](#using-swift-package-manager-spm)
   - [Testing](#testing)
@@ -49,7 +54,7 @@ Models provides reusable protocols and strongly typed data structures for common
 enhances type safety, standardizes data representation, and promotes consistency across Swift-based
 projects.
 
-🎭 Events
+### Events
 
 Encapsulate scheduling and tracking concepts to support time-based activities and event management.
 
@@ -57,7 +62,7 @@ Encapsulate scheduling and tracking concepts to support time-based activities an
   - `Schedulable`
   - `Trackable`
 
-🌍 Geography
+### Geography
 
 Define structured representations of geographic and administrative regions to standardize
 location-based data.
@@ -68,14 +73,14 @@ location-based data.
 - Protocols
   - `Locatable`
 
-🏷️ Metadata
+### Metadata
 
 Enable tracking record-level changes, ensuring data integrity and historical traceability.
 
 - Protocols
   - `Trackable`
 
-👤 People
+### People
 
 Model individual and demographic characteristics to standardize identity-related data.
 
@@ -85,7 +90,7 @@ Model individual and demographic characteristics to standardize identity-related
 - Protocols
   - `Personable`
 
-🎨 UI
+### UI
 
 Ensure consistent representation of models across user interfaces using visual elements and system
 imagery.

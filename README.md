@@ -37,8 +37,8 @@ models.  It simplifies everyday coding tasks by offering integrated abstractions
 
 This package focuses on providing practical protocols that:
 
-* Formalize patterns found in common data models.
-* Enhance reusability and readability of data-related code in Swift projects.
+- Formalize patterns found in common data models.
+- Enhance reusability and readability of data-related code in Swift projects.
 
 By integrating Models into your project, you can reduce boilerplate code, improve readability and
 maintainability, and adopt standardized patterns for data models in modern Swift apps and packages.
@@ -53,45 +53,45 @@ projects.
 
 Encapsulate scheduling and tracking concepts to support time-based activities and event management.
 
-* Protocols
-  * `Schedulable`
-  * `Trackable`
+- Protocols
+  - `Schedulable`
+  - `Trackable`
 
 🌍 Geography
 
 Define structured representations of geographic and administrative regions to standardize
 location-based data.
 
-* Enums
-  * `AdministrativeZone`
-  * `Country`
-* Protocols
-  * `Locatable`
+- Enums
+  - `AdministrativeZone`
+  - `Country`
+- Protocols
+  - `Locatable`
 
 🏷️ Metadata
 
 Enable tracking record-level changes, ensuring data integrity and historical traceability.
 
-* Protocols
-  * `Trackable`
+- Protocols
+  - `Trackable`
 
 👤 People
 
 Model individual and demographic characteristics to standardize identity-related data.
 
-* Enums
-  * `AgeBracket`
-  * `Gender`
-* Protocols
-  * `Personable`
+- Enums
+  - `AgeBracket`
+  - `Gender`
+- Protocols
+  - `Personable`
 
 🎨 UI
 
 Ensure consistent representation of models across user interfaces using visual elements and system
 imagery.
 
-* Protocol
-  * `SystemImageRepresentable`
+- Protocol
+  - `SystemImageRepresentable`
 
 ## Installation
 
@@ -122,12 +122,12 @@ site.  For project documentation, refer to the files listed in the subsections t
 
 ### Community Health
 
-* [Code of Conduct](CODE_OF_CONDUCT.md)
-* [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Contributing](CONTRIBUTING.md)
 
 ### Project
 
-* [References](REFERENCES.md)
+- [References](REFERENCES.md)
 
 ## Contributing
 

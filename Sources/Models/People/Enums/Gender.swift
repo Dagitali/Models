@@ -17,7 +17,7 @@ import Foundation
 // MARK: - Public
 
 /// An enumeration for specifying a person's gender.
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public enum Gender: String, CaseIterable, Codable {
     /// Represents a female gender identity.
     case female
@@ -34,7 +34,7 @@ public enum Gender: String, CaseIterable, Codable {
 
 // MARK: - Public (Computed Properties)
 
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension Gender {
     /// Returns the gender's human-readable name.
     var name: String {

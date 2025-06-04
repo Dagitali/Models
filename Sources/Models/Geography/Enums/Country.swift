@@ -22,7 +22,7 @@ import Foundation
 
 /// An enumeration for specifying a country by its country code using the ISO
 /// 3166-1 alpha-2 standard.
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public enum Country: String, CaseIterable, Codable {
     case ad   // Andorra
     case ae   // United Arab Emirates
@@ -290,7 +290,7 @@ public enum Country: String, CaseIterable, Codable {
 
 // MARK: - Public (Computed Properties)
 
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension Country {
     // MARK: Instance Properties
 

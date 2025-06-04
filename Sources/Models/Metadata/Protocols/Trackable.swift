@@ -42,7 +42,7 @@ import SwiftData
 /// user.update(forKey: \.name, to: "Bob")
 /// print(user.updatedAt) // Prints the updated timestamp.
 /// ```
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public protocol Trackable {
 
     /// The timestamp indicating when an instance of the conforming type was
@@ -63,7 +63,7 @@ public protocol Trackable {
 
 // MARK: - Public (Protocol Defaults)
 
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension Trackable {
     /// Updates a writable property of the conforming type and records the last
     /// update timestamp.
@@ -95,7 +95,7 @@ public extension Trackable {
     }
 }
 
-@available(iOS 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
+@available(iOS 18.0, macCatalyst 18.0, macOS 15.0, tvOS 18.0, visionOS 2.0, watchOS 11.0, *)
 public extension Trackable where Self : PersistentModel {
     /// Updates a reference-writable property and records the last update
     /// timestamp.

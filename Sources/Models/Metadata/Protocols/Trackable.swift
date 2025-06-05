@@ -33,8 +33,8 @@ import SwiftData
 /// ## Example
 /// ```swift
 /// struct User: Trackable {
-///     var createdAt: Date?
-///     var updatedAt: Date?
+///     var createdAt: Date
+///     var updatedAt: Date
 ///     var name: String
 /// }
 ///
@@ -50,7 +50,7 @@ public protocol Trackable {
     ///
     /// This property is optional and may be `nil` if the creation date is not
     /// explicitly set.
-    var createdAt: Date? { get }
+    var createdAt: Date { get }
 
     /// The timestamp indicating when an instance of the conforming type was
     /// last updated.
@@ -58,7 +58,7 @@ public protocol Trackable {
     /// This property is optional and may be `nil` if the creation date is not
     /// explicitly set.  Also, implementations should update this property
     /// whenever a modification occurs.
-    var updatedAt: Date? { get set }
+    var updatedAt: Date { get set }
 }
 
 // MARK: - Public (Protocol Defaults)
@@ -79,8 +79,8 @@ public extension Trackable {
     /// ## Example
     /// ```swift
     /// struct Player: Trackable {
-    ///     var createdAt: Date?
-    ///     var updatedAt: Date?
+    ///     var createdAt: Date
+    ///     var updatedAt: Date
     ///     var score: Int
     /// }
     ///
@@ -113,8 +113,8 @@ public extension Trackable where Self : PersistentModel {
     /// ```swift
     /// @Model
     /// final class Task: PersistentModel, Trackable {
-    ///     var createdAt: Date?
-    ///     var updatedAt: Date?
+    ///     var createdAt: Date
+    ///     var updatedAt: Date
     ///     var title: String
     ///     var isDeleted: Bool = false
     /// }
@@ -148,8 +148,8 @@ public extension Trackable where Self : PersistentModel {
     /// ```swift
     /// @Model
     /// final class Note: PersistentModel, Trackable {
-    ///     var createdAt: Date?
-    ///     var updatedAt: Date?
+    ///     var createdAt: Date
+    ///     var updatedAt: Date
     ///     var content: String
     ///     var isDeleted: Bool = false
     /// }

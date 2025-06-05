@@ -26,8 +26,8 @@ final class MockPersistentModel: Trackable {
 
     // Required
     var name: String
-    private(set) var createdAt: Date?
-    var updatedAt: Date?
+    private(set) var createdAt: Date
+    var updatedAt: Date
 
     // MARK: Initialization
 
@@ -46,8 +46,8 @@ struct MockTransientModel: Trackable {
 
     // Required
     var name: String
-    private(set) var createdAt: Date?
-    var updatedAt: Date?
+    private(set) var createdAt: Date
+    var updatedAt: Date
 
     // MARK: Initialization
 
@@ -89,7 +89,7 @@ struct TrackableTests {
         // When...
         Thread.sleep(forTimeInterval: 0.5)
         mock.update(forKey: \.name, to: "Jane Doe")
-        let updatedAt1 = mock.updatedAt!
+        let updatedAt1 = mock.updatedAt
 
         // Then...
         #expect(
@@ -97,14 +97,14 @@ struct TrackableTests {
             "name should be Jane Doe."
         )
         #expect(
-            mock.updatedAt! > mock.createdAt!,
+            mock.updatedAt > mock.createdAt,
             "updatedAt should be more recent than createdAt after updating a property."
         )
 
         // When...
         Thread.sleep(forTimeInterval: 0.5)
         mock.update(forKey: \.name, to: "Mary Jane Doe")
-        let updatedAt2 = mock.updatedAt!
+        let updatedAt2 = mock.updatedAt
 
         // Then...
         #expect(
@@ -112,7 +112,7 @@ struct TrackableTests {
             "name should be Mary Jane Doe."
         )
         #expect(
-            mock.updatedAt! > mock.createdAt!,
+            mock.updatedAt > mock.createdAt,
             "updatedAt should be more recent than createdAt after updating a property."
         )
         #expect(
@@ -131,11 +131,11 @@ struct TrackableTests {
             "name should be Mary Jane Doe."
         )
         #expect(
-            mock.updatedAt! > mock.createdAt!,
+            mock.updatedAt > mock.createdAt,
             "updatedAt should be more recent than createdAt after directly updating updatedAt."
         )
         #expect(
-            updatedAt3! > updatedAt2,
+            updatedAt3 > updatedAt2,
             "updatedAt #3 should be more recent than updatedAt #2 after updating a property."
         )
     }
@@ -162,7 +162,7 @@ struct TrackableTests {
         // When...
         Thread.sleep(forTimeInterval: 0.5)
         mock.update(forKey: \.name, to: "Jane Doe")
-        let updatedAt1 = mock.updatedAt!
+        let updatedAt1 = mock.updatedAt
 
         // Then...
         #expect(
@@ -170,14 +170,14 @@ struct TrackableTests {
             "name should be Jane Doe."
         )
         #expect(
-            mock.updatedAt! > mock.createdAt!,
+            mock.updatedAt > mock.createdAt,
             "updatedAt should be more recent than createdAt after updating a property."
         )
 
         // When...
         Thread.sleep(forTimeInterval: 0.5)
         mock.update(forKey: \.name, to: "Mary Jane Doe")
-        let updatedAt2 = mock.updatedAt!
+        let updatedAt2 = mock.updatedAt
 
         // Then...
         #expect(
@@ -185,7 +185,7 @@ struct TrackableTests {
             "name should be Mary Jane Doe."
         )
         #expect(
-            mock.updatedAt! > mock.createdAt!,
+            mock.updatedAt > mock.createdAt,
             "updatedAt should be more recent than createdAt after updating a property."
         )
         #expect(
@@ -196,7 +196,7 @@ struct TrackableTests {
         // When...
         Thread.sleep(forTimeInterval: 0.5)
         mock.updatedAt = .now
-        let updatedAt3 = mock.updatedAt!
+        let updatedAt3 = mock.updatedAt
 
         // Then...
         #expect(
@@ -204,7 +204,7 @@ struct TrackableTests {
             "name should be Mary Jane Doe."
         )
         #expect(
-            mock.updatedAt! > mock.createdAt!,
+            mock.updatedAt > mock.createdAt,
             "updatedAt should be more recent than createdAt after directly updating updatedAt."
         )
         #expect(
